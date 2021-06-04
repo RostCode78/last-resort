@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,11 @@ const Bar = styled.div`
     z-index: 10;
     display: flex;
     align-items: center;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
+}
 `;
 
 const Hmenu = styled.div`
@@ -31,10 +36,39 @@ const Hmenu = styled.div`
 `;
 
 const Navbar = () => {
+
+    const [ scrollY, setScrollY ] = useState(0);
+
+    function logit() {
+        setScrollY(window.pageYOffset)
+    }
+
+    useEffect( () => {
+
+        const bar = document.querySelector('.bar-js');
+
+        const watchScroll = () => {
+            window.addEventListener(
+                'scroll',
+                logit
+            );
+        }
+        watchScroll();
+
+        bar.style.left = `${scrollY / 4.5 - 0}%`;
+
+        return () => {
+            window.removeEventListener(
+                'scroll',
+                logit
+            );
+        }
+    })
+
     return (
         <Fragment>
             <Row>
-                <Bar>
+                <Bar className="bar-js">
                     <div className={styles.logo_container}>
                         <p>REDIFF</p>
                     </div>
