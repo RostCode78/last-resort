@@ -1,0 +1,49 @@
+.logo_container {
+    width: auto;
+    height: 80%;
+    padding: 0 10px;
+    background-color: red;
+    position: absolute;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo_container p {
+    font-size: 3em;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    color: #f9f5f4;
+}
+
+.list_container {
+    width: auto;
+    height: 80%;
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.enlace {
+    width: auto;
+    height: auto;
+    padding: 5px 15px;
+    margin: 0 15px;
+    font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
+    color: #f9f5f4;
+    text-decoration: none;
+}
+
+.enlace:hover .line {
+    width: 100%;
+}
+
+.line {
+    width: 0%;
+    height: 2px;
+    background-color: #f9f5f4;
+    transition: .2s;
+}
