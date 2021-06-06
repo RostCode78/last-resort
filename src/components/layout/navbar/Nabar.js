@@ -1,7 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import styled from '@emotion/styled';
+import './navbar.css';
 import { Link } from 'react-router-dom';
+import Hmenu from './Hmenu';
 
 const Row = styled.div`
     width: 100%;
@@ -24,18 +26,11 @@ const Bar = styled.div`
 }
 `;
 
-const Hmenu = styled.div`
-    width: 50px;
-    height: 50px;
-    background-color: #0C9AEC;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    z-index: 1;
-    cursor: pointer;
-`;
-
 const Navbar = () => {
+
+    /*====================
+        BARRA DEL MENU
+    ====================*/
 
     const [ scrollY, setScrollY ] = useState(0);
 
@@ -65,6 +60,42 @@ const Navbar = () => {
         }
     })
 
+    /*======================
+        MENU HAMBURGUESA
+    ======================*/
+
+    const [ open, setOpen ] = useState(false);
+
+    const activarMenu = () => {
+
+        let menuBtn = document.querySelector('.h-menu');
+        let body = document.querySelector('body');
+
+        if ( !open ) {
+
+            menuBtn.classList.add('open');
+
+            setTimeout(() => {
+
+                body.style.overflow = 'hidden';
+
+            }, 100);
+
+            setOpen(true);
+        } else {
+
+            setTimeout(() => {
+
+                menuBtn.classList.remove('open');
+                body.style.overflow = 'initial';
+
+            }, 100);
+
+            setOpen(false);
+        }
+
+    }
+
     return (
         <Fragment>
             <Row>
@@ -91,8 +122,13 @@ const Navbar = () => {
                         </Link>
                     </div>
                 </Bar>
-                <Hmenu></Hmenu>
+                <div onClick={activarMenu} className="h-menu">
+                    <div className="menu-line"></div>
+                </div>
             </Row>
+            <Hmenu
+                open={ open }
+            />
         </Fragment>
     );
 }
