@@ -9,6 +9,7 @@ const Row = styled.div`
     width: 100%;
     height: auto;
     position: fixed;
+    z-index: 1000000;
 `;
 
 const Bar = styled.div`
@@ -114,6 +115,10 @@ const Navbar = () => {
                         </Link>
                         <Link to={'/catalogo'} className={styles.enlace}>
                             Catalogo
+                            <div className={styles.line}></div>
+                        </Link>
+                        <Link to={'/contacto'} className={styles.enlace}>
+                            Contacto
                             <div className={styles.line}></div>
                         </Link>
                         <Link to={'/login'} className={styles.enlace}>

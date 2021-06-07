@@ -5,6 +5,7 @@ import Admi from './components/admi/Admi';
 import Catalogue from './components/catalogue/Catalogue';
 import Login from './components/login/Login';
 import ObjectView from './components/objectView/ObjectView';
+import Contact from './components/contact/Contact';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/admi" component={Admi}/>
         <Route exact path="/catalogo" component={Catalogue}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/contacto" component={Contact}/>
         <Route exact path="/vista-de-objeto" component={ObjectView}/>
       </Switch>
     </Router>

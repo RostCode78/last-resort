@@ -5,7 +5,7 @@
     position: absolute;
     top: 10px;
     right: 15px;
-    z-index: 1;
+    z-index: 5;
     cursor: pointer;
     transition: all .3s ease-in-out;
     display: flex;
@@ -26,6 +26,11 @@
     border-radius: 5px;
     box-shadow: 2px 2px 8px #00000052, -2px -2px 8px #FFFFFF52;
     transition: all .3s ease-in-out;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 .menu-line::before,

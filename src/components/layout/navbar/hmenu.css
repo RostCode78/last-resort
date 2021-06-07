@@ -1,0 +1,117 @@
+.lateral-menu {
+    width: 28%;
+    height: 100%;
+    background-color: #3C5174;
+    position: absolute;
+    right: -28%;
+    display: flex;
+    justify-content: center;
+}
+
+.lateral-menu.open {
+    transition: all .3s ease-in;
+    right: 0%;
+}
+
+.lateral-list {
+    position: absolute;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.enlace {
+    width: auto;
+    height: auto;
+    padding: 0 30px;
+    margin: 15px 0;
+    font-size: 2.5em;
+    font-family: 'Nunito', sans-serif;
+    color: #f9f5f4;
+    text-decoration: none;
+    text-align: center;
+}
+
+.enlace:hover .line {
+    width: 100%;
+}
+
+.line {
+    width: 0%;
+    height: 2px;
+    background-color: #f9f5f4;
+    transition: .2s;
+}
+
+.login-btn {
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    padding: 10px 5px;
+}
+
+.login-btn>.line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.login-btn img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    /* prevent original image from dragging */
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+.login-btn:hover .line {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .lateral-menu {
+        width: 85%;
+        height: 100%;
+        background-color: #3C5174;
+        position: absolute;
+        right: -85%;
+    }
+    .login-btn {
+        bottom: 80px;
+    }
+}
+
+.redes-menu {
+    width: auto;
+    height: auto;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.red-social {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+}
+
+.red-social:hover {
+    transform: scale(1.2);
+}
