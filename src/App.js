@@ -7,8 +7,11 @@ import Login from './components/login/Login';
 import ObjectView from './components/objectView/ObjectView';
 import Contact from './components/contact/Contact';
 
+import LayoutState from './context/layout/layoutState';
+
 function App() {
   return (
+    <LayoutState>
     <Router>
       <Switch>
         <Route exact path="/" component={Home}/>
@@ -20,6 +23,7 @@ function App() {
         <Route exact path="/vista-de-objeto" component={ObjectView}/>
       </Switch>
     </Router>
+    </LayoutState>
   );
 }
 

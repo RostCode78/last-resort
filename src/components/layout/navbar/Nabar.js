@@ -1,4 +1,5 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useContext } from 'react';
+import layoutContext from './../../../context/layout/layoutContext';
 import styles from './Navbar.module.css';
 import styled from '@emotion/styled';
 import './navbar.css';
@@ -18,7 +19,7 @@ const Bar = styled.div`
     background-color: #3C5174;
     position: absolute;
     z-index: 10;
-    display: flex;
+    display: none;
     align-items: center;
 
     @media (max-width: 800px) {
@@ -28,6 +29,10 @@ const Bar = styled.div`
 `;
 
 const Navbar = () => {
+
+    // Obtener la funcion del context de tarea
+    const layoutsContext = useContext(layoutContext);
+    const { open, mostrarMenu } = layoutsContext;
 
     /*====================
         BARRA DEL MENU
@@ -65,34 +70,20 @@ const Navbar = () => {
         MENU HAMBURGUESA
     ======================*/
 
-    const [ open, setOpen ] = useState(false);
-
     const activarMenu = () => {
 
         let menuBtn = document.querySelector('.h-menu');
-        let body = document.querySelector('body');
 
         if ( !open ) {
 
             menuBtn.classList.add('open');
-
-            setTimeout(() => {
-
-                body.style.overflow = 'hidden';
-
-            }, 100);
-
-            setOpen(true);
+            mostrarMenu();
+            
         } else {
 
-            setTimeout(() => {
+            menuBtn.classList.remove('open');
+            mostrarMenu();
 
-                menuBtn.classList.remove('open');
-                body.style.overflow = 'initial';
-
-            }, 100);
-
-            setOpen(false);
         }
 
     }
@@ -131,9 +122,7 @@ const Navbar = () => {
                     <div className="menu-line"></div>
                 </div>
             </Row>
-            <Hmenu
-                open={ open }
-            />
+            <Hmenu/>
         </Fragment>
     );
 }

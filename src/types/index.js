@@ -1,0 +1,1 @@
+export const ABRIR_MENU = 'ABRIR_MENU';

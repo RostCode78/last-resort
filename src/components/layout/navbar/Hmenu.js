@@ -1,4 +1,5 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useContext } from 'react';
+import layoutContext from './../../../context/layout/layoutContext';
 import styled from '@emotion/styled';
 import user from './../img/user.svg';
 import facebook from './../img/facebook.svg';
@@ -15,26 +16,29 @@ const BoxH = styled.div`
     z-index: 2;
 `;
 
-const Hmenu = ({ open }) => {
+const Hmenu = () => {
 
-    const [ active, setActive ] = useState(false);
+    // Obtener la funcion del context de tarea
+    const layoutsContext = useContext(layoutContext);
+    const { open } = layoutsContext;
 
     const prueba = () => {
 
-        let menuBtn = document.querySelector('.lateral-menu');
-
+        let lateral = document.querySelector('.lateral-menu');
+        let redSocial = document.querySelectorAll('.red-social');
         if ( open ) {
 
-            menuBtn.classList.add('open');
-            setActive(true);
+            lateral.classList.add('open');
+            redSocial[0].classList.add('open');
+            redSocial[1].classList.add('open');
+            redSocial[2].classList.add('open');
 
         } else {
 
-            if(active) {
-                setActive(false);
-            }
-
-            return;
+            lateral.classList.remove('open');
+            redSocial[0].classList.remove('open');
+            redSocial[1].classList.remove('open');
+            redSocial[2].classList.remove('open');
 
         }
     }
@@ -46,8 +50,6 @@ const Hmenu = ({ open }) => {
 
     return (
         <Fragment>
-            { open
-            ?
                 <BoxH>
                     <div className="lateral-menu">
                         <div className="lateral-list">
@@ -89,7 +91,6 @@ const Hmenu = ({ open }) => {
                         </a>
                     </div>
                 </BoxH>
-            : null }
         </Fragment>
     );
 }
