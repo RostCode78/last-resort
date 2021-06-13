@@ -19,10 +19,10 @@ const Bar = styled.div`
     background-color: #3C5174;
     position: absolute;
     z-index: 10;
-    display: none;
+    display: flex;
     align-items: center;
 
-    @media (max-width: 800px) {
+    @media (max-width: 940px) {
         display: none;
     }
 }
@@ -66,6 +66,15 @@ const Navbar = () => {
         }
     })
 
+    useEffect( () => {
+        if ( open ) {
+            let cuerpo = document.querySelector('body');
+            cuerpo.style.overflow = "initial";
+            mostrarMenu();
+        }
+        // eslint-disable-next-line
+    }, [])
+
     /*======================
         MENU HAMBURGUESA
     ======================*/
@@ -73,19 +82,22 @@ const Navbar = () => {
     const activarMenu = () => {
 
         let menuBtn = document.querySelector('.h-menu');
+        let body = document.querySelector('body');
 
         if ( !open ) {
 
             menuBtn.classList.add('open');
-            mostrarMenu();
+            body.style.overflow = "hidden";
             
         } else {
 
             menuBtn.classList.remove('open');
-            mostrarMenu();
+            body.style.overflow = "initial";
 
         }
 
+        mostrarMenu();
+        
     }
 
     return (

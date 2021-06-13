@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useContext } from 'react';
+import { Fragment, useEffect, useContext } from 'react';
 import layoutContext from './../../../context/layout/layoutContext';
 import styled from '@emotion/styled';
 import user from './../img/user.svg';
@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 const BoxH = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: ##f9f5f4a6;
     position: fixed;
     z-index: 2;
 `;
@@ -22,16 +21,20 @@ const Hmenu = () => {
     const layoutsContext = useContext(layoutContext);
     const { open } = layoutsContext;
 
-    const prueba = () => {
+    const reloader = () => {
 
         let lateral = document.querySelector('.lateral-menu');
         let redSocial = document.querySelectorAll('.red-social');
+        let logo = document.querySelector('.logo-container');
+        let background = document.querySelector('.background-menu');
         if ( open ) {
 
             lateral.classList.add('open');
             redSocial[0].classList.add('open');
             redSocial[1].classList.add('open');
             redSocial[2].classList.add('open');
+            logo.classList.add('open');
+            background.classList.add('open');
 
         } else {
 
@@ -39,18 +42,27 @@ const Hmenu = () => {
             redSocial[0].classList.remove('open');
             redSocial[1].classList.remove('open');
             redSocial[2].classList.remove('open');
+            logo.classList.remove('open');
+            background.classList.remove('open');
 
         }
     }
 
     useEffect( () => {
-        prueba();
+        
+        reloader();
         // eslint-disable-next-line
-    }, [open])
+    }, [open]);
 
     return (
         <Fragment>
                 <BoxH>
+                    <div className="background-menu"></div>
+
+                    <div className="logo-container">
+                        <p>REDIFF</p>
+                    </div>
+
                     <div className="lateral-menu">
                         <div className="lateral-list">
                             <Link to={'/'} className="enlace">
@@ -90,6 +102,7 @@ const Hmenu = () => {
                             <img src={whatsapp} alt="Icono de whatsapp" />
                         </a>
                     </div>
+
                 </BoxH>
         </Fragment>
     );
